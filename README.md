@@ -5,4 +5,4 @@ Controls:
 
     [W A D] - Left Player/Human
     [LEFT RIGHT UP] - Right Player
-    [f] - Toggle fullscree
+    [f] - Toggle fullscreen
