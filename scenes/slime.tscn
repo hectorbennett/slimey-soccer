@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://scripts/slime.gd" type="Script" id=1]
+[ext_resource path="res://img/right_slime.png" type="Texture" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 0, -128, -10, -118.26, -48.98, -90.51, -90.51, -48.98, -118.25, 0, -128, 48.98, -118.26, 90.51, -90.51, 118.26, -48.98, 128, -10 )
+
+[node name="slime" type="RigidBody2D"]
+
+z/z = -1
+z/relative = false
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 64 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 1.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = -1.0
+script/script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="collision" type="CollisionPolygon2D" parent="."]
+
+transform/pos = Vector2( 0, 64 )
+build_mode = 0
+polygon = Vector2Array( 128, -10, 118.26, -48.98, 90.51, -90.51, 48.98, -118.26, 0, -128, -48.98, -118.25, -90.51, -90.51, -118.26, -48.98, -128, -10, 0, 0 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+

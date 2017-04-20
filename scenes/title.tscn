@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://fonts/passion_one.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://scripts/title.gd" type="Script" id=2]
+[ext_resource path="res://fonts/concert_one.fnt" type="BitmapFont" id=3]
+[ext_resource path="res://img/left_slime.png" type="Texture" id=4]
+[ext_resource path="res://img/right_slime.png" type="Texture" id=5]
+[ext_resource path="res://img/ball.png" type="Texture" id=6]
+
+[node name="title" type="Label"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 128.0
+margin/right = 2560.0
+margin/bottom = 512.0
+custom_fonts/font = ExtResource( 1 )
+text = "Slimey Soccer"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script/script = ExtResource( 2 )
+
+[node name="label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 1024.0
+margin/right = 2560.0
+margin/bottom = 1152.0
+custom_fonts/font = ExtResource( 3 )
+text = "A rip off, by Hector Bennett"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = false
+autostart = true
+
+[node name="left_slime" type="Sprite" parent="."]
+
+transform/pos = Vector2( 512, 832 )
+texture = ExtResource( 4 )
+
+[node name="right_slime" type="Sprite" parent="."]
+
+transform/pos = Vector2( 2048, 832 )
+texture = ExtResource( 5 )
+
+[node name="ball" type="Sprite" parent="."]
+
+transform/pos = Vector2( 1280, 640 )
+texture = ExtResource( 6 )
+centered = false
+
+[connection signal="timeout" from="timer" to="." method="_on_Timer_timeout"]
+
+
