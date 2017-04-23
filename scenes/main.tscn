@@ -2,13 +2,14 @@
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://img/floor.png" type="Texture" id=2]
-[ext_resource path="res://img/ball.png" type="Texture" id=3]
-[ext_resource path="res://img/left_goal.png" type="Texture" id=4]
-[ext_resource path="res://img/right_goal.png" type="Texture" id=5]
-[ext_resource path="res://fonts/concert_one.fnt" type="BitmapFont" id=6]
-[ext_resource path="res://scripts/timer.gd" type="Script" id=7]
-[ext_resource path="res://scripts/countdown.gd" type="Script" id=8]
-[ext_resource path="res://fonts/passion_one.fnt" type="BitmapFont" id=9]
+[ext_resource path="res://img/left_goal.png" type="Texture" id=3]
+[ext_resource path="res://img/right_goal.png" type="Texture" id=4]
+[ext_resource path="res://fonts/concert_one.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://scripts/timer.gd" type="Script" id=6]
+[ext_resource path="res://scripts/countdown.gd" type="Script" id=7]
+[ext_resource path="res://fonts/passion_one.fnt" type="BitmapFont" id=8]
+[ext_resource path="res://fonts/theme.tres" type="Theme" id=9]
+[ext_resource path="res://scripts/pause.gd" type="Script" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -29,11 +30,6 @@ points = Vector2Array( 0, 0, -64, -64, 2656, -64, 2560, 0 )
 
 custom_solver_bias = 0.0
 points = Vector2Array( 2560, 0, 2656, -64, 2656, 1504, 2560, 1504 )
-
-[sub_resource type="CircleShape2D" id=5]
-
-custom_solver_bias = 0.0
-radius = 32.0
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 
@@ -186,45 +182,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ball" type="RigidBody2D" parent="."]
-
-transform/pos = Vector2( 416, 672 )
-input/pickable = false
-shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 3
-mode = 0
-mass = 1.0
-friction = 0.0
-bounce = 0.6
-gravity_scale = 20.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-velocity/linear = Vector2( 0, 0 )
-velocity/angular = 0.0
-damp_override/linear = -1.0
-damp_override/angular = -1.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
-[node name="Sprite" type="Sprite" parent="ball"]
-
-texture = ExtResource( 3 )
-
-[node name="collision" type="CollisionShape2D" parent="ball"]
-
-shape = SubResource( 5 )
-trigger = false
-_update_shape_index = 0
-
 [node name="left_goal" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
@@ -249,7 +206,7 @@ __meta__ = {
 [node name="sprite" type="Sprite" parent="left_goal"]
 
 transform/pos = Vector2( 128, 1280 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="collision" type="CollisionPolygon2D" parent="left_goal"]
 
@@ -283,7 +240,7 @@ __meta__ = {
 [node name="sprite" type="Sprite" parent="right_goal"]
 
 transform/pos = Vector2( 2432, 1280 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 
 [node name="collision" type="CollisionPolygon2D" parent="right_goal"]
 
@@ -303,7 +260,7 @@ margin/left = 2304.0
 margin/top = 128.0
 margin/right = 2432.0
 margin/bottom = 256.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 5 )
 text = "0"
 align = 1
 valign = 1
@@ -325,7 +282,7 @@ margin/left = 384.0
 margin/top = 128.0
 margin/right = 2176.0
 margin/bottom = 256.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "3:00"
 align = 1
@@ -333,7 +290,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = ExtResource( 7 )
+script/script = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -343,11 +300,10 @@ __meta__ = {
 process_mode = 1
 wait_time = 1.0
 one_shot = true
-autostart = true
+autostart = false
 
 [node name="countdown_label" type="Label" parent="."]
 
-process/pause_mode = 2
 editor/display_folded = true
 anchor/left = 3
 anchor/right = 1
@@ -361,7 +317,7 @@ margin/left = -992.0
 margin/top = 384.0
 margin/right = -1216.0
 margin/bottom = -512.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "3"
 align = 1
@@ -369,7 +325,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = ExtResource( 8 )
+script/script = ExtResource( 7 )
 
 [node name="timer" type="Timer" parent="countdown_label"]
 
@@ -388,7 +344,7 @@ margin/left = 128.0
 margin/top = 128.0
 margin/right = 256.0
 margin/bottom = 256.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 5 )
 custom_constants/shadow_offset_x = 10
 text = "0"
 align = 1
@@ -411,7 +367,7 @@ margin/left = 0.0
 margin/top = 640.0
 margin/right = 2560.0
 margin/bottom = 763.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 5 )
 text = "winner"
 align = 1
 valign = 1
@@ -422,6 +378,26 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="goal_label" type="Label" parent="."]
+
+visibility/opacity = 0.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+size_flags/stretch_ratio = 0.0
+margin/left = 0.0
+margin/top = 256.0
+margin/right = 2560.0
+margin/bottom = 512.0
+custom_fonts/font = ExtResource( 8 )
+text = "GOAL!!!!"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="left_pos" type="Position2D" parent="."]
 
 transform/pos = Vector2( 512, 1280 )
@@ -429,14 +405,6 @@ transform/pos = Vector2( 512, 1280 )
 [node name="right_pos" type="Position2D" parent="."]
 
 transform/pos = Vector2( 2048, 1280 )
-
-[node name="restart_timer" type="Timer" parent="."]
-
-process/pause_mode = 2
-process_mode = 0
-wait_time = 3.0
-one_shot = false
-autostart = false
 
 [node name="countdown_anim" type="AnimationPlayer" parent="."]
 
@@ -451,29 +419,90 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="goal_label" type="Label" parent="."]
+[node name="pause" type="VBoxContainer" parent="."]
 
-visibility/opacity = 0.0
+process/pause_mode = 2
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 9 )
+margin/left = 512.0
+margin/top = 384.0
+margin/right = 2048.0
+margin/bottom = 896.0
+alignment = 0
+script/script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="label" type="Label" parent="pause"]
+
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-size_flags/stretch_ratio = 0.0
+theme/theme = ExtResource( 9 )
 margin/left = 0.0
-margin/top = 256.0
-margin/right = 2560.0
-margin/bottom = 512.0
-custom_fonts/font = ExtResource( 9 )
-text = "GOAL!!!!"
+margin/top = 0.0
+margin/right = 1536.0
+margin/bottom = 168.0
+text = "paused"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="menu" type="Button" parent="pause"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 172.0
+margin/right = 1536.0
+margin/bottom = 340.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "menu"
+flat = true
+
+[node name="restart" type="Button" parent="pause"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 344.0
+margin/right = 1536.0
+margin/bottom = 512.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "restart"
+flat = true
+
+[node name="restart_timer" type="Timer" parent="."]
+
+process/pause_mode = 2
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+autostart = false
+
 [connection signal="timeout" from="timer_label/timer" to="timer_label" method="_on_timer_timeout"]
 
 [connection signal="timeout" from="countdown_label/timer" to="countdown_label" method="_on_timer_timeout"]
+
+[connection signal="pressed" from="pause/menu" to="pause" method="_on_menu_pressed"]
+
+[connection signal="pressed" from="pause/restart" to="pause" method="_on_restart_pressed"]
 
 [connection signal="timeout" from="restart_timer" to="." method="_on_restart_timer_timeout"]
 
