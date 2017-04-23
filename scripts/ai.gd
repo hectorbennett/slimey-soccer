@@ -2,6 +2,7 @@ extends Node2D
 
 onready var sprite = get_node("slime/sprite")
 onready var slime = get_node("slime")
+var screen_size
 var self_pos
 var ball
 var ball_x
@@ -9,16 +10,21 @@ var ball_y
 var ball_vel
 var player
 var player_pos
-var screen_size
 
 var ai_texture = preload("res://img/ai_slime.png")
 
-func _ready():
-	screen_size = get_viewport_rect().size
-	sprite.set_texture(ai_texture)
+func _start():
+	print('ai start')
 	ball = get_parent().get_node("ball")
 	set_fixed_process(true)
+
+func _ready():
+	var countdown = get_parent().get_node("countdown_label")
+	countdown.connect("start",self,"_start")
+	screen_size = get_viewport_rect().size
+	sprite.set_texture(ai_texture)
 	
+
 func _fixed_process(delta):
 	ball_vel = ball.get_linear_velocity()
 	ball_x = ball.get_global_pos().x

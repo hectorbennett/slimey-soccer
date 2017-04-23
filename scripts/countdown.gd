@@ -2,6 +2,7 @@ extends Label
 
 var time = 3
 onready var timer = get_node("timer")
+signal start
 
 func _ready():
 	get_parent().get_node("countdown_anim").play("scale")
@@ -15,7 +16,7 @@ func _on_timer_timeout():
 		get_parent().get_node("countdown_anim").play("scale")
 		time -= 1
 		set_text("GO!")
-		get_tree().set_pause(false)
+		emit_signal("start")
 		timer.start()
 	if time > 0:
 		get_parent().get_node("countdown_anim").play("scale")
@@ -24,6 +25,7 @@ func _on_timer_timeout():
 		timer.start()
 
 	if time == 1:
+		get_parent().get_node("timer_label/timer").start()
 		set("custom_colors/font_color",Color(1,1,0.4))
 	if time == 0:
 		set("custom_colors/font_color",Color(0.5,1,0.5))

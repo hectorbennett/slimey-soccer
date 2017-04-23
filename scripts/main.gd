@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var ball = get_node("ball")
+onready var ball = load("res://scenes/ball.tscn").instance()
 var ball_pos
 var screen_size
 var left_score = 0
@@ -9,13 +9,13 @@ var right_score = 0
 var left_goal = Rect2()
 var right_goal = Rect2()
 
-var paused = false
-
 func _ready():
+	var countdown = get_node("countdown_label")
+	countdown.connect("start",self,"_start")
+	
 	screen_size = get_viewport_rect().size
 	var left_pos = get_node("left_pos").get_pos()
 	var right_pos = get_node("right_pos").get_pos()
-	ball.set_pos(screen_size / 2)
 	left_goal = Rect2(0, screen_size.y - 256, 128, 256)
 	right_goal = Rect2(screen_size.x - 128, screen_size.y - 256, 128, 256)
 	
@@ -34,21 +34,10 @@ func _ready():
 		right_slime.player_type = "right"
 		right_slime.set_pos(right_pos)
 		add_child(right_slime)
-		
-	get_tree().set_pause(true)
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
 	ball_pos = ball.get_pos()
-	
-	if ball_pos.y > screen_size.y + 32:
-		ball.set_pos(Vector2(ball_pos.x, screen_size.y - 256))
-	if ball_pos.y < - 32:
-		ball.set_pos(Vector2(ball_pos.x, 256))
-	if ball_pos.x > screen_size.x + 32:
-		ball.set_pos(Vector2(-256 , ball_pos.y))
-	if ball_pos.x < - 32 :
-		ball.set_pos(Vector2(256 , ball_pos.y))
 		
 	if left_goal.has_point(ball_pos):
 		ball.set_pos(screen_size / 2)
@@ -73,6 +62,10 @@ func _fixed_process(delta):
 		if left_score == right_score:
 			get_node("winner_label").set_text("Draw!")
 		get_tree().set_pause(true)
+
+func _start():
+	add_child(ball)
+	ball.set_pos(screen_size/2)
 
 func _on_restart_timer_timeout():
 	get_tree().reload_current_scene()

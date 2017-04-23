@@ -33,7 +33,7 @@ size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 1536.0
-margin/bottom = 274.0
+margin/bottom = 229.0
 custom_fonts/font = ExtResource( 3 )
 text = "Slimey Soccer"
 align = 1
@@ -49,9 +49,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
-margin/top = 278.0
+margin/top = 233.0
 margin/right = 1536.0
-margin/bottom = 552.0
+margin/bottom = 379.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -65,13 +65,45 @@ focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
-margin/top = 556.0
+margin/top = 383.0
+margin/right = 1536.0
+margin/bottom = 529.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "2 Player"
+flat = true
+
+[node name="settings_button" type="Button" parent="container"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 533.0
+margin/right = 1536.0
+margin/bottom = 679.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Settings"
+flat = true
+
+[node name="quit_button" type="Button" parent="container"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 683.0
 margin/right = 1536.0
 margin/bottom = 832.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "2 Player"
+text = "Quit"
 flat = true
 
 [node name="Label2" type="Label" parent="."]
@@ -96,5 +128,7 @@ max_lines_visible = -1
 [connection signal="pressed" from="container/1p_button" to="." method="_on_1p_button_pressed"]
 
 [connection signal="pressed" from="container/2p_button" to="." method="_on_2p_button_pressed"]
+
+[connection signal="pressed" from="container/quit_button" to="." method="_on_quit_button_pressed"]
 
 
