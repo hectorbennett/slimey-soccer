@@ -87,7 +87,7 @@ margin/bottom = 679.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Settings"
+text = "Settings/Info"
 flat = true
 
 [node name="quit_button" type="Button" parent="container"]
@@ -106,7 +106,7 @@ shortcut = null
 text = "Quit"
 flat = true
 
-[node name="Label2" type="Label" parent="."]
+[node name="fullscreen_label" type="Label" parent="."]
 
 rect/scale = Vector2( 0.5, 0.5 )
 focus/ignore_mouse = true

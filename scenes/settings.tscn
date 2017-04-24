@@ -1,0 +1,233 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://fonts/theme.tres" type="Theme" id=1]
+[ext_resource path="res://fonts/passion_one.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://img/picker.png" type="Texture" id=3]
+[ext_resource path="res://img/volume_slider.png" type="Texture" id=4]
+[ext_resource path="res://scripts/sfx_texture.gd" type="Script" id=5]
+
+[sub_resource type="ImageTexture" id=7]
+
+flags = 7
+image = Image()
+size = Vector2( 0, 0 )
+storage = 0
+lossy_quality = 0.7
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[node name="settings" type="Node2D"]
+
+[node name="container" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 1 )
+margin/left = 384.0
+margin/top = 0.0
+margin/right = 2176.0
+margin/bottom = 1496.0
+alignment = 0
+
+[node name="settings_label" type="Label" parent="container"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1792.0
+margin/bottom = 371.0
+custom_fonts/font = ExtResource( 2 )
+text = "Settings"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="volume" type="GridContainer" parent="container"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 375.0
+margin/right = 1792.0
+margin/bottom = 746.0
+columns = 2
+
+[node name="fx_label" type="Label" parent="container/volume"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1274.0
+margin/bottom = 183.0
+text = "fx volume"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="fx_slider" type="HSlider" parent="container/volume"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 1278.0
+margin/top = 0.0
+margin/right = 1648.0
+margin/bottom = 73.0
+custom_icons/grabber_hilite = ExtResource( 3 )
+custom_icons/grabber = SubResource( 7 )
+custom_styles/slider = SubResource( 8 )
+range/min = 0.0
+range/max = 8.0
+range/step = 1.0
+range/page = 0.0
+range/value = 6.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+
+[node name="texture" type="TextureProgress" parent="container/volume/fx_slider"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 0
+size_flags/vertical = 0
+size_flags/stretch_ratio = 100.0
+theme/theme = ExtResource( 1 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 384.0
+margin/bottom = 64.0
+range/min = 0.0
+range/max = 8.0
+range/step = 1.0
+range/page = 0.0
+range/value = 8.0
+range/exp_edit = false
+range/rounded = false
+texture/under = null
+texture/over = null
+texture/progress = ExtResource( 4 )
+radial_fill/fill_degrees = 360.0
+radial_fill/center_offset = Vector2( 0, 0 )
+script/script = ExtResource( 5 )
+
+[node name="music_label" type="Label" parent="container/volume"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 187.0
+margin/right = 1274.0
+margin/bottom = 370.0
+text = "music volume"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="music_slider" type="HSlider" parent="container/volume"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 1278.0
+margin/top = 187.0
+margin/right = 1791.0
+margin/bottom = 370.0
+custom_icons/grabber_hilite = ExtResource( 3 )
+custom_icons/grabber = SubResource( 7 )
+custom_styles/slider = SubResource( 8 )
+range/min = 0.0
+range/max = 8.0
+range/step = 1.0
+range/page = 0.0
+range/value = 6.0
+range/exp_edit = false
+range/rounded = false
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+
+[node name="texture" type="TextureProgress" parent="container/volume/music_slider"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 0
+size_flags/vertical = 0
+size_flags/stretch_ratio = 100.0
+theme/theme = ExtResource( 1 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 384.0
+margin/bottom = 64.0
+range/min = 0.0
+range/max = 8.0
+range/step = 1.0
+range/page = 0.0
+range/value = 8.0
+range/exp_edit = false
+range/rounded = false
+texture/under = null
+texture/over = null
+texture/progress = ExtResource( 4 )
+radial_fill/fill_degrees = 360.0
+radial_fill/center_offset = Vector2( 0, 0 )
+script/script = ExtResource( 5 )
+
+[node name="info_label" type="Label" parent="container"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 750.0
+margin/right = 1792.0
+margin/bottom = 1121.0
+custom_fonts/font = ExtResource( 2 )
+text = "Info"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="back_button" type="Button" parent="container"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 1125.0
+margin/right = 1792.0
+margin/bottom = 1496.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Back"
+flat = true
+
+
