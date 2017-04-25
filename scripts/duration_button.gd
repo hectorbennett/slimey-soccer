@@ -29,3 +29,11 @@ func _on_duration_button_focus_enter():
 func _on_duration_button_focus_exit():
 	set_process_input(false)
 	get_node("arrows").set_hidden(true)
+
+func _on_left_pressed():
+	option -= 1
+	set_time()
+
+func _on_right_pressed():
+	option += 1
+	set_time()

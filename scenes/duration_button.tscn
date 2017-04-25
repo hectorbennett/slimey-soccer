@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://fonts/theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/duration_button.gd" type="Script" id=2]
-[ext_resource path="res://img/picker.png" type="Texture" id=3]
+[ext_resource path="res://img/left_arrow.png" type="Texture" id=3]
+[ext_resource path="res://img/right_arrow.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -46,9 +47,9 @@ focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = ExtResource( 1 )
-margin/left = 64.0
+margin/left = 0.0
 margin/top = 32.0
-margin/right = 704.0
+margin/right = 800.0
 margin/bottom = 160.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
@@ -64,24 +65,46 @@ script/script = ExtResource( 2 )
 
 [node name="arrows" type="Node2D" parent="."]
 
-[node name="left" type="Sprite" parent="arrows"]
+[node name="left" type="TextureButton" parent="arrows"]
 
-transform/pos = Vector2( -192, 96 )
-transform/rot = 90.0
-transform/scale = Vector2( 2, 2 )
-texture = ExtResource( 3 )
-centered = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 32.0
+margin/right = 64.0
+margin/bottom = 96.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+textures/normal = ExtResource( 3 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
-[node name="left1" type="Sprite" parent="arrows"]
+[node name="right" type="TextureButton" parent="arrows"]
 
-transform/pos = Vector2( 832, 32 )
-transform/rot = -90.0
-transform/scale = Vector2( 2, 2 )
-texture = ExtResource( 3 )
-centered = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 736.0
+margin/top = 32.0
+margin/right = 800.0
+margin/bottom = 96.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+textures/normal = ExtResource( 4 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
 [connection signal="focus_enter" from="." to="." method="_on_duration_button_focus_enter"]
 
 [connection signal="focus_exit" from="." to="." method="_on_duration_button_focus_exit"]
+
+[connection signal="pressed" from="arrows/left" to="." method="_on_left_pressed"]
+
+[connection signal="pressed" from="arrows/right" to="." method="_on_right_pressed"]
 
 

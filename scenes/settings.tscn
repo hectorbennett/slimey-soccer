@@ -122,7 +122,7 @@ flat = true
 
 margin/left = 1376.0
 margin/top = 704.0
-margin/right = 2016.0
+margin/right = 2176.0
 margin/bottom = 832.0
 
 [connection signal="pressed" from="menu_button" to="." method="_on_menu_button_pressed"]
