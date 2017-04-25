@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://fonts/theme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/duration_button.gd" type="Script" id=2]
+[ext_resource path="res://img/picker.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[node name="duration_button" type="Button"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 1 )
+margin/left = 64.0
+margin/top = 32.0
+margin/right = 704.0
+margin/bottom = 160.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "30 seconds"
+flat = true
+script/script = ExtResource( 2 )
+
+[node name="arrows" type="Node2D" parent="."]
+
+[node name="left" type="Sprite" parent="arrows"]
+
+transform/pos = Vector2( -192, 96 )
+transform/rot = 90.0
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="left1" type="Sprite" parent="arrows"]
+
+transform/pos = Vector2( 832, 32 )
+transform/rot = -90.0
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+centered = false
+
+[connection signal="focus_enter" from="." to="." method="_on_duration_button_focus_enter"]
+
+[connection signal="focus_exit" from="." to="." method="_on_duration_button_focus_exit"]
+
+

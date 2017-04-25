@@ -1,5 +1,6 @@
 extends Node
 var gamemode = String()
+var game_length = 120
 
 func _ready():
 	set_process_input(true)

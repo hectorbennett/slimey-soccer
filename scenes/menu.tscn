@@ -129,6 +129,8 @@ max_lines_visible = -1
 
 [connection signal="pressed" from="container/2p_button" to="." method="_on_2p_button_pressed"]
 
+[connection signal="pressed" from="container/settings_button" to="." method="_on_settings_button_pressed"]
+
 [connection signal="pressed" from="container/quit_button" to="." method="_on_quit_button_pressed"]
 
 

@@ -1,6 +1,6 @@
 extends Label
 
-var time = 120
+var time
 var minutes = float()
 var seconds = float()
 onready var timer = get_node("timer")
@@ -15,6 +15,7 @@ func set_time():
 	set_text(minutes + ":" + seconds)
 
 func _ready():
+	time = get_node("/root/global").game_length
 	set_time()
 
 func _on_timer_timeout():

@@ -10,6 +10,9 @@ func _on_1p_button_pressed():
 func _on_2p_button_pressed():
 	get_node("/root/global").gamemode = "2_player"
 	get_tree().change_scene("scenes/main.tscn")
+	
+func _on_settings_button_pressed():
+	get_tree().change_scene("scenes/settings.tscn")
 
 func _on_quit_button_pressed():
 	get_tree().quit()

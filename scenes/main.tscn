@@ -31,27 +31,27 @@ points = Vector2Array( 0, 0, -64, -64, 2656, -64, 2560, 0 )
 custom_solver_bias = 0.0
 points = Vector2Array( 2560, 0, 2656, -64, 2656, 1504, 2560, 1504 )
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 32, 1408, 0, 1408, 0, 1152, 32, 1184 )
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 32, 1184, 0, 1152, 256, 1152, 256, 1184 )
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 2304, 1184, 2304, 1152, 2560, 1152, 2528, 1184 )
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 2528, 1184, 2560, 1152, 2560, 1408, 2528, 1408 )
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 
 resource/name = "goal"
 length = 0.9
@@ -88,7 +88,7 @@ tracks/2/keys = {
 "values": [ "G", "GO", "GOA", "GOAL", "GOAL!", "GOAL!!", "GOAL!!!", "GOAL!!!!" ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 
 length = 0.5
 loop = false
@@ -186,10 +186,10 @@ __meta__ = {
 
 editor/display_folded = true
 input/pickable = false
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 7 )
+shapes/1/shape = SubResource( 6 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
 collision/layers = 1
@@ -220,10 +220,10 @@ trigger = false
 
 editor/display_folded = true
 input/pickable = false
-shapes/0/shape = SubResource( 8 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 9 )
+shapes/1/shape = SubResource( 8 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
 collision/layers = 1
@@ -412,8 +412,8 @@ process/pause_mode = 2
 playback/process_mode = 0
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/goal = SubResource( 10 )
-anims/scale = SubResource( 11 )
+anims/goal = SubResource( 9 )
+anims/scale = SubResource( 10 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
