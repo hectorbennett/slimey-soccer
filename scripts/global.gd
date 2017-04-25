@@ -1,5 +1,6 @@
 extends Node
 var gamemode = String()
+var game_length_option = 2
 var game_length = 120
 
 func _ready():

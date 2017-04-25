@@ -1,13 +1,16 @@
 extends Button
 
 var options = [["30 seconds", 30], ["1 minute", 60], ["2 minutes", 120], ["3 minutes", 180], ["5 minutes", 300]]
-var option = 2
+var option
+onready var global = get_node("/root/global")
 
 func set_time():
 	set_text(options[option % options.size()][0])
-	get_node("/root/global").game_length = options[option % options.size()][1]
+	global.game_length = options[option % options.size()][1]
+	global.game_length_option = option
 
 func _ready():
+	option = global.game_length_option
 	get_node("arrows").set_hidden(true)
 	set_time()
 	

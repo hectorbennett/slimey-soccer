@@ -87,7 +87,7 @@ margin/bottom = 679.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Settings/Info"
+text = "Settings"
 flat = true
 
 [node name="quit_button" type="Button" parent="container"]
