@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=1]
+[gd_scene load_steps=21 format=1]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://img/floor.png" type="Texture" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://fonts/passion_one.fnt" type="BitmapFont" id=8]
 [ext_resource path="res://fonts/theme.tres" type="Theme" id=9]
 [ext_resource path="res://scripts/pause.gd" type="Script" id=10]
-[ext_resource path="res://sfx/beep_1.smp" type="Sample" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -113,15 +112,6 @@ tracks/1/keys = {
 "transitions": FloatArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 512, 384 ), Vector2( 256, 192 ), Vector2( 341, 256 ), Vector2( 512, 384 ) ]
-}
-
-[sub_resource type="SampleLibrary" id=11]
-
-samples/beep_1 = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 11 )
 }
 
 [node name="main" type="Node2D"]
@@ -505,17 +495,6 @@ process_mode = 1
 wait_time = 3.0
 one_shot = true
 autostart = false
-
-[node name="samples" type="SamplePlayer2D" parent="."]
-
-params/volume_db = 0.0
-params/pitch_scale = 1.0
-params/attenuation/min_distance = 1.0
-params/attenuation/max_distance = 2048.0
-params/attenuation/distance_exp = 1.0
-config/polyphony = 1
-config/samples = SubResource( 11 )
-config/pitch_random = 0.0
 
 [connection signal="timeout" from="timer_label/timer" to="timer_label" method="_on_timer_timeout"]
 

@@ -30,6 +30,7 @@ func _fixed_process(delta):
 		vel.y = 0
 	
 	if on_floor and jump:
+		get_node("sfx").play("jump")
 		vel.y = - jump_force
 	
 	if move_left:
